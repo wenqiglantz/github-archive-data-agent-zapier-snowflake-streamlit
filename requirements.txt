@@ -1,4 +1,4 @@
 streamlit
 snowflake-snowpark-python
-llama_index==0.7.14
+llama_index==0.7.16
 llama_hub
