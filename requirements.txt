@@ -1,0 +1,4 @@
+streamlit
+snowflake-snowpark-python
+llama_index==0.7.14
+llama_hub
