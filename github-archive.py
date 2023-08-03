@@ -33,6 +33,9 @@ if sql_query:
     # add a line chart to display the result visually
     st.line_chart(df, x="REPO_NAME", y="SUM_STARS")
 
+    # get the most-starred repo
+    top_repo = df.iloc[0, :]
+    
     # construct zapier_spec by passing in Zapier API key
     zapier_spec = ZapierToolSpec(api_key=os.getenv("ZAPIER_API_KEY"))
 
@@ -43,5 +46,5 @@ if sql_query:
     agent = OpenAIAgent.from_tools(zapier_spec.to_tool_list(), verbose=True, llm=llm)
 
     # add commands
-    agent.chat('Send me an email on the details of Significant-Gravitas/Auto-GPT.')
-    agent.chat('Add a task to my CoSchedule calendar to check out Significant-Gravitas/Auto-GPT with due date August 3rd 2023.')
+    agent.chat(f"Send me an email on the details of {top_repo['REPO_NAME']}.")
+    agent.chat(f"Add a task to my CoSchedule calendar to check out {top_repo['REPO_NAME']} with due date August 3rd 2023.")
