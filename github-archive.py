@@ -45,6 +45,6 @@ if sql_query:
     # initialize OpenAI agent by passing in zapier_spec and the llm
     agent = OpenAIAgent.from_tools(zapier_spec.to_tool_list(), verbose=True, llm=llm)
 
-    # add commands
+    # add instructions
     agent.chat(f"Send me an email on the details of {top_repo['REPO_NAME']}.")
     agent.chat(f"Add a task to my CoSchedule calendar to check out {top_repo['REPO_NAME']} with due date August 3rd 2023.")
